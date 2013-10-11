@@ -4,10 +4,12 @@
 	<title>ESMT SOCIAL NETWORK</title>
 	<meta charset="UTF-8" />
 	<style>
+	
+		/****** STYLISATION GLOBALE *************/
 		*{margin: 0px; padding: 0px;}
 		
 		body{
-			background-color: #f2f2f2;
+			background-color: green;
 			margin: 0px;			
 			font-family: "Trebuchet MS";
 		}
@@ -37,39 +39,39 @@
 		
 		#content{
 			width: 100%;
-			background-color: green;
-			
-			text-align: center;
 		}
 		
 		#content>#presentation, #content>#inscription{
 			display: inline-block;
 			vertical-align: top;
 			width: 30%;
-			padding-left: 5px;
 			float: left;
-			min-height: 400px;
+			min-height: 500px;
 		}
 		
 		
 		#content>#connexion{
 			display: inline-block;
 			vertical-align: top;
-			width: 38%;
-			padding-left: 5px;
+			width: 35%;
+			padding-left: 1%;
 			background-color: green;
-			min-height: 400px;
+			min-height: 500px;
+			float: left;
 		}
 		
 		#content>#presentation{
 			background-color: red;
+			padding-left: 5px;
 		}
 		
 		#content>#inscription{
 			background-color: yellow;
+			padding-left: 1%;
 		}
 		
 		#content>#news{
+		clear: both;
 			padding-left: 5px;
 			background-color: blue;
 			text-align: left;
@@ -86,6 +88,32 @@
 			background-color: #012;	
 			color: white;
 			text-align: center;
+		}
+		
+		
+		/************ Forms **********************/
+		input[type="text"], input[type="email"], input[type="password"], select{
+			border: 1px solid #eaeaea;
+			padding: 10px;
+			border-radius: 5px;
+			width: 70%;
+		}
+		
+		input[type="submit"]{
+			border: 1px solid #eaeaea;
+			padding: 10px;
+			border-radius: 6px;
+			width: 100px;
+			background-color: #2c3fed;
+			color: white;
+			margin-top: 2px;
+			font-size: 13px;
+			font-family: "Trebuchet MS";
+			font-weight: bold;
+		}
+		
+		input[type="submit"]:hover{
+			cursor: pointer;
 		}
 		
 	</style>
@@ -114,19 +142,19 @@
 				<h1>Appréciez!</h1>
 				<form method="post" action="">
 					<p>
-						<label for="nom">Nom:</label>
+						<label for="nom">Nom:</label><br/>
 						<input type="text" placeholder="Entrer votre nom" id="nom" name="nom" required/> <br/>
-						<label for="prenom">Prénoms:</label>
+						<label for="prenom">Prénoms:</label><br/>
 						<input type="text" placeholder="Entrer votre prénom" id="prenom" name="prenom" required/> <br/>
-						<label for="pseudo">Pseudo:</label>
+						<label for="pseudo">Pseudo:</label><br/>
 						<input type="text" placeholder="Entrer votre pseudo" id="nom" name="nom" required/> <br/>
-						<label for="pass1">Mot de passe:</label>
+						<label for="pass1">Mot de passe:</label><br/>
 						<input type="password" id="pass1" name="pass1" required/> <br/>
-						<label for="pass2">Confirmer votre mot de passe:</label>
+						<label for="pass2">Confirmer votre mot de passe:</label><br/>
 						<input type="password" id="pass2" name="pass2" required/> <br/>
-						<label for="email">Email:</label>
+						<label for="email">Email:</label><br/>
 						<input type="email" placeholder="johndoe@exemple.com" id="email" name="email" required/> <br/>
-						<label for="niveau">Niveau d'étude:</label>
+						<label for="niveau">Niveau d'étude:</label><br/>
 						<select name="niveau">
 							<option value="">DTS</option>
 							<option value="">Licence</option>
@@ -143,9 +171,9 @@
 				<h1>Restez scotché...</h1>
 				<form method="post" action="">
 					<p>
-						<label for="pseudo">Pseudo:</label>
+						<label for="pseudo">Pseudo:</label><br/>
 						<input type="text" placeholder="Entrer votre pseudo" id="nom" name="nom" required/> <br/>
-						<label for="pass">Mot de passe:</label>
+						<label for="pass">Mot de passe:</label><br/>
 						<input type="password" id="pass" name="pass" required/> <br/>
 						<label for="cnx_persistent">
 							<input type="checkbox" /> Garder ma sessiona active
@@ -185,7 +213,7 @@
 		</div>
 		
 		<footer>
-			<p>&copy; Honoré HOUNWANOU - Tous droits réservés</p>
+			<p>&copy; ESMT SOCIAL NETWORK - Tous droits réservés (Designed & Developped by Honoré HOUNWANOU)</p>
 		</footer>
 	</div>
 </body>
