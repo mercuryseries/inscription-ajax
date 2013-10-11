@@ -1,133 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-	<title>ESMT SOCIAL NETWORK</title>
-	<meta charset="UTF-8" />
-	<style>
-	
-		/****** STYLISATION GLOBALE *************/
-		*{margin: 0px; padding: 0px;}
+<?php require "includes/header.php"; ?>
 		
-		body{
-			background-color: green;
-			margin: 0px;			
-			font-family: "Trebuchet MS";
-		}
-		
-		#main_wrapper{
-			width: 100%;
-			margin: 0px auto;
-			min-width: 900px;
-		}
-		
-		#top_header{
-			background-color: #012;	
-			color: white;
-			width: 100%;
-		}
 
-		#top_header>hgroup>h1{
-			text-shadow: 1px 2px 3px #CCC;
-			letter-spacing: -3px;
-			padding-left: 5px;
-		}
-		#top_header>hgroup>h2{
-			color: rgba(255,255,255,0.6);
-			letter-spacing: -1px;
-			padding-left: 5px;
-		}
-		
-		#content{
-			width: 100%;
-		}
-		
-		#content>#presentation, #content>#inscription{
-			display: inline-block;
-			vertical-align: top;
-			width: 30%;
-			float: left;
-			min-height: 500px;
-		}
-		
-		
-		#content>#connexion{
-			display: inline-block;
-			vertical-align: top;
-			width: 35%;
-			padding-left: 1%;
-			background-color: green;
-			min-height: 500px;
-			float: left;
-		}
-		
-		#content>#presentation{
-			background-color: red;
-			padding-left: 5px;
-		}
-		
-		#content>#inscription{
-			background-color: yellow;
-			padding-left: 1%;
-		}
-		
-		#content>#news{
-		clear: both;
-			padding-left: 5px;
-			background-color: blue;
-			text-align: left;
-		}
-		
-		#content>#news>article{
-			margin-top: 10px;
-		}
-		
-		footer{
-			clear: both;
-			border-top: 1px solid #000;
-			padding-left: 5px;
-			background-color: #012;	
-			color: white;
-			text-align: center;
-		}
-		
-		
-		/************ Forms **********************/
-		input[type="text"], input[type="email"], input[type="password"], select{
-			border: 1px solid #eaeaea;
-			padding: 10px;
-			border-radius: 5px;
-			width: 70%;
-		}
-		
-		input[type="submit"]{
-			border: 1px solid #eaeaea;
-			padding: 10px;
-			border-radius: 6px;
-			width: 100px;
-			background-color: #2c3fed;
-			color: white;
-			margin-top: 2px;
-			font-size: 13px;
-			font-family: "Trebuchet MS";
-			font-weight: bold;
-		}
-		
-		input[type="submit"]:hover{
-			cursor: pointer;
-		}
-		
-	</style>
-</head>
-<body>
-	<div id="main_wrapper">
-		<header id="top_header">
-			<hgroup>
-				<h1>ESMT SOCIAL NETWORK</h1>
-				<h2>Notre slogan !</h2>
-			</hgroup>
-		</header>
-		
-		<div id="content">
 			<section id="presentation">
 				<h1>Découvrez !</h1>
 				ESMT SOCIAL NETWORK est Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -210,11 +83,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</article>
 			</section>
-		</div>
+
+<?php require "includes/footer.php"; ?>
 		
-		<footer>
-			<p>&copy; ESMT SOCIAL NETWORK - Tous droits réservés (Designed & Developped by Honoré HOUNWANOU)</p>
-		</footer>
-	</div>
-</body>
-</html>
+		
+		
