@@ -13,14 +13,15 @@
 			
 			<section id="inscription">
 				<h1>Appréciez!</h1>
-				<form method="post" action="">
+				<form id="register_form" method="post" action="register.php" onsubmit="return false;">
 					<p>
 						<label for="nom">Nom:</label><br/>
 						<input type="text" placeholder="Entrer votre nom" id="nom" name="nom" required/> <br/>
 						<label for="prenom">Prénoms:</label><br/>
 						<input type="text" placeholder="Entrer votre prénom" id="prenom" name="prenom" required/> <br/>
 						<label for="pseudo">Pseudo:</label><br/>
-						<input type="text" placeholder="Entrer votre pseudo" id="nom" name="nom" required/> <br/>
+						<input type="text" placeholder="Entrer votre pseudo" id="pseudo" name="pseudo" required/>
+						<span id="output_checkuser"></span><br/>
 						<label for="pass1">Mot de passe:</label><br/>
 						<input type="password" id="pass1" name="pass1" required/> <br/>
 						<label for="pass2">Confirmer votre mot de passe:</label><br/>
@@ -35,7 +36,7 @@
 							<option value="">Master</option>
 							<option value="">Master spécialisé</option>
 						</select> <br/>
-						<input type="submit" value="Inscription" />
+						<input type="submit" id="bRegister" value="Inscription" />
 					</p>
 				</form>
 			</section>
@@ -84,6 +85,54 @@
 				</article>
 			</section>
 
+			<script>
+				$(document).ready(function(){
+					$("#pseudo").keyup(function(){
+						//On vérifie si le pseudo est valide ou n'a pas été déjà pris
+						if($(this).val().length >= 5){
+							check_pseudo();
+						}
+					});
+					$("#pseudo").blur(function(){
+						//On vérifie si le pseudo est valide ou n'a pas été déjà pris
+						check_pseudo();
+					});
+					$("#register_form").submit(function(){
+						$.ajax({
+							type: "post",
+							url:  "register.php",
+							beforeSend: function(){
+											$("#bRegister").attr({"value": "Traitement en cours...",
+																  "disabled": "disabled"});
+											$("#bRegister").css("background-color", "#ccc");
+										},
+							success: function(data){
+										
+									 }
+						});
+					});
+					
+					function check_pseudo(){
+							$.ajax({
+								type: "post",
+								url:  "register.php",
+								beforeSend: function(){
+												$("#output_checkuser").html('<span style="color:red;">Checking...</span>');
+											},
+								data: {
+									'pseudo' : $("#pseudo").val()
+								},
+								success: function(data){
+											if(data == "success"){
+												$("#output_checkuser").html('<small style="color:green;">Valide</small>');
+											} else {
+												$("#output_checkuser").html('<small style="color:red;">'+ data +'</small>');
+											}
+										 }
+							});
+					}
+				});
+			</script>
 <?php require "includes/footer.php"; ?>
 		
 		
