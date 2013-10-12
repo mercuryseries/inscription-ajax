@@ -38,16 +38,21 @@ hgroup>h1 {
 	color:#FFF;
 	}
 	#presentation	{ 
-	background: #87b012;
+		background-color: #08c;
 	}
 	#inscription	{ 
-		background: #08c;
+		background: #eaeaea; 
+		color: #000;
+		border: 1px solid #c5c5c5;
 	}
 	#connexion { 
-		background: #ffb3b2; 
-		color: #000;
+		background: #87b012;
+	}	
+		#connexion a{
+		color: #005580;
 	}
-
+		
+	
 section>h1 { 
 	font-weight: bold; 
 	font-size: 20px; 
@@ -58,7 +63,10 @@ section>h1 {
 	margin: 0px 0px 5px 0px;	
 	letter-spacing: -1px;
 }
-
+section:nth-child(2)>h1{
+	background-color: #c5c5c5;
+	color: #000;
+}
 footer{
 	clear: both;
 	color: #000;
@@ -68,7 +76,6 @@ footer{
 /************ Forms **********************/
 		input[type="text"], input[type="email"], input[type="password"], select{
 			border-radius: 5px;
-			font-weight: bold;
 		}
 		
 		.small_image{
@@ -80,5 +87,14 @@ footer{
 		small{
 			font-family: "Trebuchet MS";
 		}
-		
-		
+
+
+/*********** Eléments particuliers *******************/		
+#status{	
+  padding: 8px 4px;
+  color: #d14;
+  white-space: nowrap;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  display: none;
+}
