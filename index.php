@@ -3,32 +3,34 @@
 
 			<section id="presentation">
 				<h1>Découvrez !</h1>
-				ESMT SOCIAL NETWORK est Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				<p>
+				   ESMT Social Network permet à tout étudiant de l'ESMT de sortir de sa petite bulle.<br/>
+				   C'est l'espace adéquat pour faire connaitre vos talents divers, exprimer vos passions, 
+				   partager vos connaissances, mais aussi tisser des liens d'amitié durables avec des 
+				   personnes à qui vous n'osez pas adresser la parole en vrai sur le campus... 
+				</p>
 			</section>
 			
 			<section id="inscription">
-				<h1>Appréciez!</h1>
-				<form id="register_form" method="post" action="register.php" onsubmit="return false;">
+				<h1>Testez !</h1>
+				<form id="register_form" method="post" onsubmit="return false;">
 					<p>
-						<label for="nom">Nom:</label><br/>
-						<input type="text" placeholder="Entrer votre nom" id="nom" name="nom" required/> <br/>
-						<label for="prenom">Prénoms:</label><br/>
-						<input type="text" placeholder="Entrer votre prénom" id="prenom" name="prenom" required/> <br/>
-						<label for="pseudo">Pseudo:</label><br/>
-						<input type="text" placeholder="Entrer votre pseudo" id="pseudo" name="pseudo" required/>
-						<span id="output_checkuser"></span><br/>
-						<label for="pass1">Mot de passe:</label><br/>
-						<input type="password" id="pass1" name="pass1" required/> <br/>
-						<label for="pass2">Confirmer votre mot de passe:</label><br/>
-						<input type="password" id="pass2" name="pass2" required/> <br/>
-						<label for="email">Email:</label><br/>
-						<input type="email" placeholder="johndoe@exemple.com" id="email" name="email" required/> <br/>
-						<label for="niveau">Niveau d'étude:</label><br/>
+						<label for="nom">Nom:</label>
+						<input type="text" placeholder="Entrez votre nom" id="nom" name="nom" required/> 
+						<label for="prenom">Prénom:</label>
+						<input type="text" placeholder="Entrez votre prénom" id="prenom" name="prenom" required/>
+						<label for="pseudo">Pseudo:</label>
+						<input type="text" placeholder="Entrez votre pseudo" id="pseudo" name="pseudo" required/>
+						<small id="output_checkuser"></small>
+						<label for="pass1">Mot de passe:</label>
+						<input type="password" id="pass1" name="pass1" required/>
+						<small id="output_pass1"></small>
+						<label for="pass2">Confirmer votre mot de passe:</label>
+						<input type="password" id="pass2" name="pass2" required/> 
+						<small id="output_pass2"></small>
+						<label for="email">Email:</label>
+						<input type="email" placeholder="johndoe@exemple.com" id="email" name="email" required/>
+						<label for="niveau">Niveau d'étude:</label>
 						<select name="niveau">
 							<option value="">DTS</option>
 							<option value="">Licence</option>
@@ -36,7 +38,7 @@
 							<option value="">Master</option>
 							<option value="">Master spécialisé</option>
 						</select> <br/>
-						<input type="submit" id="bRegister" value="Inscription" />
+						<input type="submit" id="bRegister" class="btn btn-success" value="Inscription" />
 					</p>
 				</form>
 			</section>
@@ -45,58 +47,46 @@
 				<h1>Restez scotché...</h1>
 				<form method="post" action="">
 					<p>
-						<label for="pseudo">Pseudo:</label><br/>
-						<input type="text" placeholder="Entrer votre pseudo" id="nom" name="nom" required/> <br/>
-						<label for="pass">Mot de passe:</label><br/>
-						<input type="password" id="pass" name="pass" required/> <br/>
+						<label for="pseudo">Pseudo:</label>
+						<input type="text" placeholder="Entrez votre pseudo" id="nom" name="nom" required/>
+						<label for="pass">Mot de passe:</label>
+						<input type="password" id="pass" name="pass" required/>
 						<label for="cnx_persistent">
-							<input type="checkbox" /> Garder ma sessiona active
-						</label> <br/>
+							<input type="checkbox" style="vertical-align: top;"/> Garder ma session active
+						</label>
 						<a href="#">Mot de passe oublié ?</a> <br/>
-						<input type="submit" value="Connexion" />
+						<input type="submit" class="btn btn-primary" value="Connexion" />
 					</p>
 				</form>
 			</section>
-			<section id="news">
-				<h1>Les dernières actualités</h1>
-				<article id="amicale">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</article>
-				<article id="club_scientifique">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</article>
-				<article id="enactus">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</article>
-			</section>
+			
 
 			<script>
 				$(document).ready(function(){
 					$("#pseudo").keyup(function(){
-						//On vérifie si le pseudo est valide ou n'a pas été déjà pris
-						if($(this).val().length >= 5){
+						//On vérifie si le pseudo est ok ou n'a pas été déjà pris
 							check_pseudo();
-						}
 					});
-					$("#pseudo").blur(function(){
-						//On vérifie si le pseudo est valide ou n'a pas été déjà pris
-						check_pseudo();
+					$("#pass1").keyup(function(){
+						//On vérifie si le mot de passe est ok
+							if($(this).val().length < 6){
+								$("#output_pass1").css("color", "red").html("<br/>Trop court (6 caractères minimum)");
+							} else if($("#pass2").val() != "" && $("#pass2").val() != $("#pass1").val()){
+								$("#output_pass1").html("<br/>Les deux mots de passe sont différents");
+								$("#output_pass2").html("<br/>Les deux mots de passe sont différents");
+							} else {
+								$("#output_pass1").html('<img src="images/check.png" class="small_image" alt="" />');
+								if($("#pass2").val() != ""){
+									$("#output_pass2").html('<img src="images/check.png" class="small_image" alt="" />');
+								}
+							}
 					});
+					$("#pass2").keyup(function(){
+						//On vérifie si les mots de passe coïncident
+							check_password();
+					});
+					
+					//Traitement du formulaire d'inscription
 					$("#register_form").submit(function(){
 						$.ajax({
 							type: "post",
@@ -104,7 +94,9 @@
 							beforeSend: function(){
 											$("#bRegister").attr({"value": "Traitement en cours...",
 																  "disabled": "disabled"});
-											$("#bRegister").css("background-color", "#ccc");
+											$("#bRegister").css({"background-color": "#ccc",
+																 "color" : "#000"
+															});
 										},
 							success: function(data){
 										
@@ -116,17 +108,33 @@
 							$.ajax({
 								type: "post",
 								url:  "register.php",
-								beforeSend: function(){
-												$("#output_checkuser").html('<span style="color:red;">Checking...</span>');
-											},
 								data: {
 									'pseudo' : $("#pseudo").val()
 								},
 								success: function(data){
 											if(data == "success"){
-												$("#output_checkuser").html('<small style="color:green;">Valide</small>');
+												$("#output_checkuser").html('<img src="images/check.png" class="small_image" alt="" />');
 											} else {
-												$("#output_checkuser").html('<small style="color:red;">'+ data +'</small>');
+												$("#output_checkuser").css("color", "red").html(data);
+											}
+										 }
+							});
+					}
+					
+					function check_password(){
+							$.ajax({
+								type: "post",
+								url:  "register.php",
+								data: {
+									'pass1' : $("#pass1").val(),
+									'pass2' : $("#pass2").val()
+								},
+								success: function(data){
+											if(data == "success"){
+												 $("#output_pass2").html('<img src="images/check.png" class="small_image" alt="" />');
+												 $("#output_pass1").html('<img src="images/check.png" class="small_image" alt="" />');
+											} else {
+												$("#output_pass2").css("color", "red").html(data);
 											}
 										 }
 							});
