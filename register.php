@@ -2,6 +2,7 @@
 //Vérification du pseudo
 if(!empty($_POST['pseudo_check'])){
 	$pseudo = $_POST['pseudo_check'];
+	$pseudo = preg_replace('#[^a-z0-9]#i', '', $pseudo); // filter everything but letters and numbers
 	if(strlen($pseudo) < 3 || strlen($pseudo) > 16){
 		echo '<br/>3 à 16 caractètres SVP.';
 		exit();
@@ -72,6 +73,7 @@ if(!empty($_POST['email_check'])){
 if(isset($_POST['pseudo'])){
 	require "includes/connect_db.php";
 	extract($_POST);
+	$pseudo = preg_replace('#[^a-z0-9]#i', '', $pseudo); // filter everything but letters and numbers
 	$q = $db->prepare('SELECT id FROM users WHERE pseudo = ?');
 	$q->execute(array($pseudo));
 	$pseudo_check = $q->rowCount();
@@ -111,11 +113,37 @@ if(isset($_POST['pseudo'])){
 		$q->execute(array('id' => $user_id,
 						  'pseudo' => $pseudo));	
 		
-		if(!file_exists("members/$user_id")){
+		if(!file_exists( "members/$user_id")){
 			mkdir("members/$user_id", 0755);
 		}
 		
-		echo 'register_success';
+		$to = $email;
+		$from = "auto-responder@esmtsn.com";
+		$subject = "ESMT SOCIAL NETWORK - Activation de votre compte";
+		$message = "Hi $pseudo,<br/><br/>
+
+				   <h1>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h1>
+				   <p>Pour ce faire, il suffit de cliquez sur le lien suivant:<br/>
+
+				   http://esmtsn.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
+				   Si l'URL n'apparait pas comme un lien actif, veuillez SVP copier/coller ce 
+				   dernier dans la barre d'adresse de votre navigateur internet.</>
+
+				   <h2>Indentifiants de connexion:</h2>  
+				   <p>
+						E-mail Address: $email<br/> 
+						Password:       $pass1<br/>
+				   </p> 
+				   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a>!</p>";
+
+		$headers = "From: $from\n";
+		$headers .= "MIME-Version: 1.0\n";
+		$headers .= "Content-type: text/html; charset=iso-8859-1\n";
+		if(mail($to, $subject, $message, $headers)){
+			echo 'register_success';
+		} else {
+			echo "Erreur lors de l'envoi du mail.";
+		}
 		exit();
 	}
 	exit();
