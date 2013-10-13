@@ -13,7 +13,7 @@
 			
 			<section id="inscription">
 				<h1>Testez !</h1>
-				<form id="register_form" method="post" onsubmit="return false;">
+				<form id="register_form" onsubmit="return false;">
 					<p>
 						<label for="nom">Nom:</label>
 						<input type="text" placeholder="Entrez votre nom" id="nom" name="nom" required/> 
@@ -52,18 +52,21 @@
 			
 			<section id="connexion">
 				<h1>Restez scotché...</h1>
-				<form method="post" action="">
+				<form id="login_form" method="post" onsubmit="return false;">
 					<p>
-						<label for="pseudo">Pseudo:</label>
-						<input type="text" placeholder="Entrez votre pseudo" id="nom" name="nom" required/>
-						<label for="pass">Mot de passe:</label>
-						<input type="password" id="pass" name="pass" required/>
+						<label for="login">Pseudo:</label>
+						<input type="text" placeholder="Entrez votre pseudo" id="login" name="login" required/>
+						<label for="mdp">Mot de passe:</label>
+						<input type="password" id="mdp" name="mdp" required/>
 						<label for="cnx_persistent">
-							<input type="checkbox" style="vertical-align: top;"/> Garder ma session active
+							<input type="checkbox" id="cnx_persistent" style="vertical-align: top;"/> Garder ma session active
 						</label>
 						<a href="#">Mot de passe oublié ?</a> <br/>
 						<input type="submit" class="btn btn-primary" value="Connexion" />
 					</p>
+					<div id="status2">
+						Remplir tous les champs
+					</div>
 				</form>
 			</section>
 			<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -71,7 +74,7 @@
 			<script>
 				$(document).ready(function(){
 					
-					 $( "#date_naiss" ).datepicker({
+					 $("#date_naiss").datepicker({
 						minDate: new Date(1970, 1 - 1, 30), 
 						maxDate: new Date(2010, 1 - 1, 30), 
 						changeMonth: true,
@@ -213,6 +216,35 @@
 						}
 					});
 					
+				
+					$("#login_form").submit(function(){
+						var pseudo = $("#login").val();
+						var pass   = $("#mdp").val();
+						var status = $("#status2");	
+						
+						if(pseudo == "" || pass == ""){
+							status.html("Veuillez remplir tous les champs.").fadeIn(400);	
+						} else {
+							$.ajax({
+								type: 'post',
+								url: "login.php",
+								data: {
+									'pseudo' : pseudo,
+									'pass' : pass
+								},
+								beforeSend: function(){
+									status.html("Veuillez patienter...").fadeIn(400);
+								},
+								success: function(data){
+									if(data == "login_failed"){
+										status.html("Pseudo/mot de passe invalide !").fadeIn(400);
+									} else {
+										window.location = "profile.php?id="+data;
+									}
+								}
+							});
+						}
+					});
 				});
 			</script>
 <?php require "includes/footer.php"; ?>
