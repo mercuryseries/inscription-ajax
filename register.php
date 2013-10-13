@@ -120,21 +120,29 @@ if(isset($_POST['pseudo'])){
 		$to = $email;
 		$from = "auto-responder@esmtsn.com";
 		$subject = "ESMT SOCIAL NETWORK - Activation de votre compte";
-		$message = "Hi $pseudo,<br/><br/>
+		$message = "<!DOCTYPE html>
+					<html>
+						<head>	
+							<meta charset=\"UTF-8\" />
+						</head>
+						<body>
+							Hi $pseudo,<br/><br/>
 
-				   <h2>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h2>
-				   <p>Pour ce faire, il suffit de cliquez sur le lien suivant:<br/>
+						   <h2>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h2>
+						   <p>Pour ce faire, il suffit de cliquez sur le lien suivant:<br/>
 
-				   http://esmtsn.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
-				   Si l'URL n'apparait pas comme un lien actif, veuillez SVP copier/coller ce 
-				   dernier dans la barre d'adresse de votre navigateur internet.</>
+						   http://esmtsn.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
+						   Si l'URL n'apparait pas comme un lien actif, veuillez SVP copier/coller ce 
+						   dernier dans la barre d'adresse de votre navigateur internet.</p>
 
-				   <h2>Indentifiants de connexion:</h2>  
-				   <p>
-						Adresse e-mail: $email<br/> 
-						Mot de passe:       $pass1<br/>
-				   </p> 
-				   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a></p>";
+						   <h2>Indentifiants de connexion:</h2>  
+						   <p>
+								Adresse e-mail: $email<br/> 
+								Mot de passe:       $pass1<br/>
+						   </p> 
+						   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a></p>
+						</body>
+					</html>";
 
 		$headers = "From: $from\n";
 		$headers .= "MIME-Version: 1.0\n";
@@ -143,6 +151,9 @@ if(isset($_POST['pseudo'])){
 			echo 'register_success';
 		} else {
 			echo "Erreur lors de l'envoi du mail.";
+			//Tout est bon, on active le compte
+			$q = $db->prepare("DELETE FROM users WHERE id = ?");
+			$q->execute(array($db->lastInsertId()));
 		}
 		exit();
 	}

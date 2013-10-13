@@ -22,7 +22,7 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 		));	
 	$numRows = $q->rowCount();
 	if($numRows == 0){
-		header("Location: message.php?msg=Les paramètres de ce lien sont erronés");
+		header("Location: message.php?msg=fake_parameters");
 		exit();
 	}
 	

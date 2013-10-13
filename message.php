@@ -9,8 +9,12 @@ if(!empty($_GET['msg'])){
 					
 	} else if($msg == "activation_success") {
 		$message = '<h2>Activation réussie</h2>
-					<p>Votre compte est activé.<br/>
-					Cliquer sur ce <a href="login.php">lien</a> pour vous connecter</p>';
+					<p>Votre compte est maintenant activé.<br/>
+					Vous pouvez cliquer sur ce <a href="login.php">lien</a> pour vous connecter.</p>';
+	} else if($msg == "fake_parameters") {
+		$message = '<h2>Paramètres érronés</h2>
+					<p>Les paramètres fournis dans l\'URL sont érronés<br/>
+					Vérifiez que vous avez copier/coller le bon lien d\'activation</p>';
 	} else {
 		$message = $msg;
 	}

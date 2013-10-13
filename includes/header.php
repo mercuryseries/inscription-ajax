@@ -17,7 +17,7 @@
 		<header id="top_header">
 			<hgroup>
 				<h1>ESMT SOCIAL NETWORK</h1>
-				<h2>Because future is now !</h2>
+				<h2>Parce que c'est maintenant que se prépare le futur !</h2>
 			</hgroup>
 		</header>
 		

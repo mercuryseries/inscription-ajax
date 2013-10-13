@@ -197,9 +197,6 @@
 								},
 								beforeSend: function(){
 												$("#bRegister").attr("value", "Traitement en cours...");
-												$("#bRegister").css({"background-color": "#ccc",
-																	 "color" : "#000"
-																	});
 											},
 								success: function(data){
 											if(data != "register_success"){
@@ -207,9 +204,9 @@
 												$("#bRegister").attr("value", "Inscription");
 												$("#bRegister").addClass("btn-primary").css("color", "white");
 											} else {
-												$("#presentation").fadeOut();
+												$("#presentation").hide();
 												$("#connexion h1").html("Connexion");
-												$("#inscription").html("<strong>Félicitation " + pseudo + " !</strong><br/>Un lien d'activation de votre compte vient de vous être envoyé à l'adresse électronique indiquée lors de l'inscription.<br/>Veuillez tout simplement cliquer ce lien et vous serez définitivement membre de <strong>l'ESMT SOCIAL NETWORK</strong>.<br/><br/>Une fois que ceci est fait, vous n'aurez plus qu'à vous connectez!<br/>Alors, on se dit à très bientôt ;) !").css("width", "inherit").fadeIn(400);
+												$("#inscription").html("<strong>Félicitation " + prenom + " " + nom + " !</strong><br/>Un lien d'activation de votre compte vient de vous être envoyé à l'adresse électronique indiquée lors de l'inscription.<br/>Veuillez tout simplement cliquer ce lien et vous serez définitivement membre de <strong>l'ESMT SOCIAL NETWORK</strong>.<br/><em>(Pensez à vérifier vos spams ou courrier indésirable, si vous ne voyez pas ce mail dans votre boîte de réception)</em><br/><br/>Une fois que ceci est fait, vous n'aurez plus qu'à vous connectez!<br/>Alors, on se dit à très bientôt ;) !").css("width", "inherit").fadeIn(400);
 											}
 										 }
 							});
