@@ -122,7 +122,7 @@ if(isset($_POST['pseudo'])){
 		$subject = "ESMT SOCIAL NETWORK - Activation de votre compte";
 		$message = "Hi $pseudo,<br/><br/>
 
-				   <h1>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h1>
+				   <h2>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h2>
 				   <p>Pour ce faire, il suffit de cliquez sur le lien suivant:<br/>
 
 				   http://esmtsn.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
@@ -131,10 +131,10 @@ if(isset($_POST['pseudo'])){
 
 				   <h2>Indentifiants de connexion:</h2>  
 				   <p>
-						E-mail Address: $email<br/> 
-						Password:       $pass1<br/>
+						Adresse e-mail: $email<br/> 
+						Mot de passe:       $pass1<br/>
 				   </p> 
-				   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a>!</p>";
+				   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a></p>";
 
 		$headers = "From: $from\n";
 		$headers .= "MIME-Version: 1.0\n";

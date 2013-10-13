@@ -18,7 +18,7 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 			'id' => $id,
 			'pseudo' => $pseudo,
 			'email' => $e,
-			'password' => $ssl
+			'pass' => $ssl
 		));	
 	$numRows = $q->rowCount();
 	if($numRows == 0){
@@ -31,7 +31,7 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 	$q->execute(array($id));
 
 	//Double vérification
-	$q = $db->prepare("SELECT * FROM users WHER activated = '1' AND id = ?");
+	$q = $db->prepare("SELECT * FROM users WHERE activated = '1' AND id = ?");
 	$q->execute(array($id));
 	$numRows = $q->rowCount();
 	

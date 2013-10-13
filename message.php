@@ -1,5 +1,5 @@
 <?php 
-if(!empty($_GET['msg']){
+if(!empty($_GET['msg'])){
 	$msg = preg_replace('#[^a-z 0-9.:_()]#i', '', $_GET['msg']);
 	
 	if($msg == "activation_failure"){
@@ -19,5 +19,13 @@ if(!empty($_GET['msg']){
 	$message = "Aucun message";
 }
 ?>
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Infos ESMT SOCIAL NETWORK</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
 <div><?php echo $message; ?></div>
+</body>
+</html>
