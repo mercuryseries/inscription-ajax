@@ -9,7 +9,7 @@ body {
 
 #main_wrapper { 
 	width: 960px;
-	margin: 40px auto;
+	margin: auto;
 	overflow: hidden;
 }
 
@@ -22,8 +22,7 @@ hgroup>h1 {
 	}
 	hgroup>h2{ 
 		color: #1f8cc5;
-		
-	text-shadow: 1px 1px 3px #ccc;
+		text-shadow: 1px 1px 3px #ccc;
 }
 
 	
@@ -97,4 +96,154 @@ footer{
   white-space: nowrap;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+}
+
+
+/************* TOP BAR USER **********************/
+#top_bar h1{
+	float: left;
+	font-size: 1.5em;
+}
+
+#top_bar #top_bar_menu{
+	float: right;
+	margin-top: 15px;
+}
+
+#top_bar_menu li{
+	display: inline-block;
+	margin-right: 8px;
+}
+
+#top_bar_menu a{
+	color: #686465;
+	font-weight: bold;
+}
+
+.separator{
+	clear: both;
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 2px;
+}
+
+
+#left_block{
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 4px;
+	float: left;
+	width: 200px;
+	border-right: 1px solid #eaeaea;
+	padding-right: 50px;
+}
+
+#right_block{
+	float: left;
+	width: 670px;
+	padding-left: 10px;
+	margin-left: 15px;
+	padding-top: 10px;
+	vertical-align: top;
+}
+
+#infos_user{	
+	font-weight: bold;
+}
+
+#infos_user #updates, #infos_user #friends_number{
+	display: inline-block;
+}
+
+#infos_user #friends_number{
+	float: right;
+}
+
+#profile_img{
+	border: 1px solid #FFF; 
+	padding: 1px;
+	width: 100%;
+	outline: 1px solid #c5c5c5;
+	margin-bottom: 10px;
+}
+
+.blue{
+	color: #1f8cc5;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#search{
+	clear: both;
+	margin-top: 20px;
+}
+
+#friends img{
+	width: 30px;
+	height: 30px;
+	padding-bottom: 5px;	
+}
+
+#right_block h1{
+	font-size: 25px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#right_block h3{
+	font-size: 15px;
+	margin: 0px;
+	padding: 0px;
+	font-weight: normal;
+}
+
+.notif_msg{
+	background-color: #F00;
+	color: #FFF;
+	padding: 2px 5px 2px 5px;
+	margin-right: 4px;
+	border: 1px solid #FFF;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.o_comment{
+	color: #555;
+}
+
+.img-little{
+	border: 2px solid #c5c5c5;
+	border-radius: 5px;
+	padding: 2px;
+}
+
+.feed_author, .feed_content{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.feed{
+	margin-bottom: 10px;
+}
+.feed_author{
+	float: left;
+}
+.feed_content{
+	margin-left: 10px;
+	background-color: #FFF;
+	width: 560px;
+	padding: 7px;
+	border: 1px solid #c5c5c5;
+}
+
+.comment{
+	clear: both;
+}
+
+.info{
+	background: rgba(0,0,0,0.6);
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 50px;
+	color: white;
+	border: 1px dashed white;
 }

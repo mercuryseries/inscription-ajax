@@ -8,7 +8,7 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 
 	//Evaluation de la longueur des variables $_GET
 	if(empty($id) || strlen($pseudo) < 3 || strlen($e) < 5 || strlen($ssl) < 5){
-		header("Location: message.php?msg=activation_string_length_issues");
+		header("Location: info.php?msg=activation_length");
 		exit();
 	}
 	
@@ -22,7 +22,7 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 		));	
 	$numRows = $q->rowCount();
 	if($numRows == 0){
-		header("Location: message.php?msg=fake_parameters");
+		header("Location: info.php?msg=fake_parameters");
 		exit();
 	}
 	
@@ -36,15 +36,15 @@ if(!empty($_GET['id']) && !empty($_GET['u']) && !empty($_GET['e']) && !empty($_G
 	$numRows = $q->rowCount();
 	
 	if($numRows == 0){
-		header("Location: message.php?msg=activation_failure");
+		header("Location: info.php?msg=activation_error");
 		exit();
 	} else {
-		header("Location: message.php?msg=activation_success");
+		header("Location: info.php?msg=activation_success");
 		exit();
 	}
 	
 
 } else {
-	header("Location: message.php?msg=MISSING_GET_VARIABLES");
+	header("Location: info.php?msg=get_vars_missing");
 }
 ?> 

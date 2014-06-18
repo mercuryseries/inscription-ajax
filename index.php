@@ -1,13 +1,21 @@
+<?php $title = "Bienvenue sur le réseau social des Teachers du NET"; ?>
 <?php require "includes/header.php"; ?>
 		
 
 			<section id="presentation">
 				<h1>Découvrez !</h1>
 				<p>
-				   ESMT Social Network permet à tout étudiant de l'ESMT de sortir de sa petite bulle.<br/>
-				   C'est l'espace adéquat pour faire connaitre vos talents divers, exprimer vos passions, 
-				   partager vos connaissances, mais aussi tisser des liens d'amitié durables avec des 
-				   personnes à qui vous n'osez pas adresser la parole en vrai sur le campus...
+					A travers des vidéos simples et chirurgicales, nous vous aidons
+					à devenir des développeurs chevronnés.
+				</p>
+				<p>
+					Les TEACHERS DU NET,<br/> c'est actuellement plus de <strong>400</strong> étudiants, une communauté active
+					et un corps professoral jeune, dynamique et passionné.
+				</p>
+				<p>
+					Vous n'êtes toujours pas convaincu ? Regardez simplement l'une de nos vidéos
+					et nous vous laisserons juge !!<br/>
+					<span style="float: right;">&rarr; <a href="http://youtube.com/hounwanou1993" style="color: #012;">Chaîne YouTube</a> &larr;</span>
 				</p>
 			</section>
 			
@@ -31,17 +39,6 @@
 						<label for="email">Adresse électronique:</label>
 						<input type="email" placeholder="johndoe@exemple.com" id="email" name="email" required/>
 						<small id="output_email"></small>
-						<label for="date_naissance">Date de naissance:</label>
-						<input type="text" id="date_naiss" name="date_naiss" value="16/05/1993" />
-						<label for="cycle">Cycle actuel:</label>
-						<select id="cycle" name="cycle">
-							<option value="1">DTS</option>
-							<option value="2">Licence</option>
-							<option value="3">Ingénieur</option>
-							<option value="4">Master</option>
-							<option value="5">Master spécialisé</option>
-							<option value="6">Autre</option>
-						</select> <br/>
 						<div id="status">
 							Remplir tous les champs
 						</div>
@@ -69,19 +66,12 @@
 					</div>
 				</form>
 			</section>
+
 			<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-			<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
 			<script>
 				$(document).ready(function(){
 					
-					 $("#date_naiss").datepicker({
-						minDate: new Date(1970, 1 - 1, 30), 
-						maxDate: new Date(2010, 1 - 1, 30), 
-						changeMonth: true,
-						changeYear: true
-					});
-					
-					$("input").focus(function(){
+					$("#register_form input").focus(function(){
 						$("#status").fadeOut(800);
 					});
 					
@@ -89,6 +79,7 @@
 						//On vérifie si le pseudo est ok ou n'a pas été déjà pris
 							check_pseudo();
 					});
+
 					$("#pass1").keyup(function(){
 						//On vérifie si le mot de passe est ok
 							if($(this).val().length < 6){
@@ -97,12 +88,10 @@
 								$("#output_pass1").html("<br/>Les deux mots de passe sont différents");
 								$("#output_pass2").html("<br/>Les deux mots de passe sont différents");
 							} else {
-								$("#output_pass1").html('<img src="images/check.png" class="small_image" alt="" />');
-								if($("#pass2").val() != ""){
-									$("#output_pass2").html('<img src="images/check.png" class="small_image" alt="" />');
-								}
+								$("#output_pass1").html('<img src="img/check.png" class="small_image" alt="" />');
 							}
 					});
+
 					$("#pass2").keyup(function(){
 						//On vérifie si les mots de passe coïncident
 							check_password();
@@ -122,7 +111,7 @@
 								},
 								success: function(data){
 											if(data == "success"){
-												$("#output_checkuser").html('<img src="images/check.png" class="small_image" alt="" />');
+												$("#output_checkuser").html('<img src="img/check.png" class="small_image" alt="" />');
 												return true;
 											} else {
 												$("#output_checkuser").css("color", "red").html(data);
@@ -141,8 +130,8 @@
 								},
 								success: function(data){
 											if(data == "success"){
-												 $("#output_pass2").html('<img src="images/check.png" class="small_image" alt="" />');
-												 $("#output_pass1").html('<img src="images/check.png" class="small_image" alt="" />');
+												 $("#output_pass2").html('<img src="img/check.png" class="small_image" alt="" />');
+												 $("#output_pass1").html('<img src="img/check.png" class="small_image" alt="" />');
 											} else {
 												$("#output_pass2").css("color", "red").html(data);
 											}
@@ -159,7 +148,7 @@
 								},
 								success: function(data){
 											if(data == "success"){
-												$("#output_email").html('<img src="images/check.png" class="small_image" alt="" />');
+												$("#output_email").html('<img src="img/check.png" class="small_image" alt="" />');
 											} else {
 												$("#output_email").css("color", "red").html(data);
 											}
@@ -177,10 +166,8 @@
 						var pass1 = $("#pass1").val();
 						var pass2 = $("#pass2").val();
 						var email = $("#email").val();
-						var date_naiss = $("#date_naiss").val();
-						var cycle = $('#cycle option:selected').val();
 
-						if(nom == "" || prenom == "" || pseudo == "" || pass1 == "" || pass2 == "" || email == "" || date_naiss == "" ){
+						if(nom == "" || prenom == "" || pseudo == "" || pass1 == "" || pass2 == "" || email == "" ){
 							status.html("Veuillez remplir tous les champs").fadeIn(400);
 						} else if(pass1 != pass2) {
 							status.html("Les deux mots de passe sont différents").fadeIn(400);
@@ -195,8 +182,6 @@
 									'pass1' : pass1,
 									'pass2' : pass2,
 									'email' : email,
-									'date_naiss' : date_naiss,
-									'cycle' : cycle
 								},
 								beforeSend: function(){
 												$("#bRegister").attr("value", "Traitement en cours...");
@@ -209,7 +194,7 @@
 											} else {
 												$("#presentation").hide();
 												$("#connexion h1").html("Connexion");
-												$("#inscription").html("<strong>Félicitation " + prenom + " " + nom + " !</strong><br/>Un lien d'activation de votre compte vient de vous être envoyé à l'adresse électronique indiquée lors de l'inscription.<br/>Veuillez tout simplement cliquer ce lien et vous serez définitivement membre de <strong>l'ESMT SOCIAL NETWORK</strong>.<br/><em>(Pensez à vérifier vos spams ou courrier indésirable, si vous ne voyez pas ce mail dans votre boîte de réception)</em><br/><br/>Une fois que ceci est fait, vous n'aurez plus qu'à vous connectez!<br/>Alors, on se dit à très bientôt ;) !").css("width", "inherit").fadeIn(400);
+												$("#inscription").html("<strong>Juste une dernière étape " + prenom + " " + nom + " !</strong><br/>Un lien d'activation de votre compte vient de vous être envoyé à l'adresse électronique indiquée lors de l'inscription.<br/>Veuillez tout simplement cliquer ce lien et vous serez définitivement membre du <strong>TDN SOCIAL NETWORK</strong>.<br/><em>(Pensez à vérifier vos spams ou courriers indésirables, si vous ne voyez pas ce mail dans votre boîte de réception)</em><br/><br/>Une fois que ceci est fait, vous n'aurez plus qu'à vous connecter!<br/>Alors, on se dit à très bientôt ;) !").css("width", "inherit").fadeIn(400);
 											}
 										 }
 							});
@@ -233,13 +218,13 @@
 									'pass' : pass
 								},
 								beforeSend: function(){
-									status.html("Veuillez patienter...").fadeIn(400);
+									status.html("Connexion en cours...").fadeIn(400);
 								},
 								success: function(data){
 									if(data == "login_failed"){
 										status.html("Pseudo/mot de passe invalide !").fadeIn(400);
 									} else {
-										window.location = "profile.php?id="+data;
+										window.location = "profile.php";
 									}
 								}
 							});

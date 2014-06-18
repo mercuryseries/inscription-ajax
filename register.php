@@ -1,6 +1,6 @@
 <?php 
 //Vérification du pseudo
-if(!empty($_POST['pseudo_check'])){
+if(!empty($_POST['pseudo_check'])){ 
 	$pseudo = $_POST['pseudo_check'];
 	$pseudo = preg_replace('#[^a-z0-9]#i', '', $pseudo); // filter everything but letters and numbers
 	if(strlen($pseudo) < 3 || strlen($pseudo) > 16){
@@ -71,7 +71,7 @@ if(!empty($_POST['email_check'])){
 
 //Traitement de l'inscription
 if(isset($_POST['pseudo'])){
-	require "includes/connect_db.php";
+	require "includes/connect_db.php"; 
 	extract($_POST);
 	$pseudo = preg_replace('#[^a-z0-9]#i', '', $pseudo); // filter everything but letters and numbers
 	$q = $db->prepare('SELECT id FROM users WHERE pseudo = ?');
@@ -82,7 +82,7 @@ if(isset($_POST['pseudo'])){
 	$q->execute(array($email));
 	$email_check = $q->rowCount();
 	
-	if(empty($nom) || empty($prenom) || empty($pseudo)|| empty($pass1) || empty($pass2) || empty($email) || empty($date_naiss) || empty($cycle)){
+	if(empty($nom) || empty($prenom) || empty($pseudo)|| empty($pass1) || empty($pass2) || empty($email)){
 		echo "Tous les champs n'ont pas été remplis.";
 	} else if($pseudo_check > 0) {
 		echo "Pseudo déjà utilisé";
@@ -96,30 +96,24 @@ if(isset($_POST['pseudo'])){
 		echo "Les mots de passe ne correspondent pas.";
 	} else {
 		$hash_pass = sha1($pass1);
-		$q = $db->prepare('INSERT INTO users(pseudo, email, password, id_cycle, ip, signup, lastlogin, notescheck)
-						   VALUES(:pseudo, :email, :password, :id_cycle, :ip, now(), now(), now())');
+		$q = $db->prepare('INSERT INTO users(pseudo, email, password, ip, created)
+						   VALUES(:pseudo, :email, :password, :ip, now())');
 		$q->execute(array(
 			'pseudo' => $pseudo,
 			'email' => $email,
 			'password' => $hash_pass,
-			'id_cycle' => $cycle,
 			'ip' => $_SERVER['REMOTE_ADDR']
 		));	
 		
 		$user_id = $db->lastInsertId();
-								
-		$q = $db->prepare('INSERT INTO useroptions(id, pseudo, background)
-						   VALUES(:id, :pseudo, \'default\')');
-		$q->execute(array('id' => $user_id,
-						  'pseudo' => $pseudo));	
-		
+
 		if(!file_exists( "members/$user_id")){
 			mkdir("members/$user_id", 0755);
 		}
 		
 		$to = $email;
-		$from = "auto-responder@esmtsn.com";
-		$subject = "ESMT SOCIAL NETWORK - Activation de votre compte";
+		$from = "auto-responder@teachersdunet.com";
+		$subject = "TDN SOCIAL NETWORK - Activation de votre compte";
 		$message = "<!DOCTYPE html>
 					<html>
 						<head>	
@@ -128,10 +122,10 @@ if(isset($_POST['pseudo'])){
 						<body>
 							Hi $pseudo,<br/><br/>
 
-						   <h2>Complétez cette dernière étape pour activer votre compte <strong>ESMT SOCIAL NETWORK</strong>!</h2>
+						   <h2>Complétez cette dernière étape pour activer votre compte <strong>TDN SOCIAL NETWORK</strong>!</h2>
 						   <p>Pour ce faire, il suffit de cliquez sur le lien suivant:<br/>
 
-						   http://esmtsn.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
+						   http://teachersdunet.com/activation.php?id=$user_id&amp;u=$pseudo&amp;e=$email&amp;ssl=$hash_pass<br/>
 						   Si l'URL n'apparait pas comme un lien actif, veuillez SVP copier/coller ce 
 						   dernier dans la barre d'adresse de votre navigateur internet.</p>
 
@@ -140,7 +134,7 @@ if(isset($_POST['pseudo'])){
 								Adresse e-mail: $email<br/> 
 								Mot de passe:       $pass1<br/>
 						   </p> 
-						   <p>Rendez-vous sur le site <a href=\"http://esmtsn.com\">ESMT SOCIAL NETWORK</a></p>
+						   <p>Rendez-vous sur le site <a href=\"http://teachersdunet.com\">TDN SOCIAL NETWORK</a></p>
 						</body>
 					</html>";
 
@@ -149,12 +143,12 @@ if(isset($_POST['pseudo'])){
 		$headers .= "Content-type: text/html; charset=iso-8859-1\n";
 		if(mail($to, $subject, $message, $headers)){
 			echo 'register_success';
-		} else {
-			echo "Erreur lors de l'envoi du mail.";
-			//Tout est bon, on active le compte
+		/*else {
+			//On supprime le compte de la bdd vu qu'il ne sert plus à rien
 			$q = $db->prepare("DELETE FROM users WHERE id = ?");
-			$q->execute(array($db->lastInsertId()));
-		}
+			$q->execute(array($user_id));
+			echo "Erreur lors de l'envoi du mail.";
+		}*/
 		exit();
 	}
 	exit();
