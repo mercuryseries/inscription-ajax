@@ -147,8 +147,8 @@ if(isset($_POST['pseudo'])){
 			//On supprime le compte de la bdd vu qu'il ne sert plus à rien
 			$q = $db->prepare("DELETE FROM users WHERE id = ?");
 			$q->execute(array($user_id));
-			echo "Erreur lors de l'envoi du mail.";
-		}*/
+			echo "Erreur lors de l'envoi du mail.";*/
+		}
 		exit();
 	}
 	exit();
